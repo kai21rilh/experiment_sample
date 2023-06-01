@@ -14,7 +14,7 @@ const next_text = "次のページへ";
 
 // image
 const img_hourglass =
-  "https://kai21rilh.github.com/Experiment_sample/img/hourglass_animated.gif";
+  "https://kai21rilh.github.io/Experiment_sample/img/hourglass_animated.gif";
 
 // ID (random digits)
 const par_id = jsPsych.randomization.randomInt(10000000, 99999999);
