@@ -10,7 +10,7 @@ const jsPsych = initJsPsych({
     jQuery("display_stage_background").remove();
     qthis.clickNextButton();
   },
-});
+}); // edited
 
 // general variables
 const next_text = "次のページへ";
@@ -18,19 +18,6 @@ const next_text = "次のページへ";
 // image
 const img_hourglass =
   "https://kai21rilh.github.io/experiment_sample/img/hourglass_animated.gif";
-
-// ID (random digits)
-const par_id = jsPsych.randomization.randomInt(10000000, 99999999);
-
-// start (full screen)
-const start_experiment = {
-  type: jsPsychFullscreen,
-  message:
-    "<p>それでは、これから実験を開始します。</p><p>まず、画面をフルスクリーン表示に変更します。</p><p>準備ができたら、下のボタンを押してください。</p>",
-  button_label: next_text,
-  fullscreen_mode: true,
-  delay_after: 1000,
-};
 
 // demographics
 const age = {
@@ -77,14 +64,7 @@ const hourglass3 = {
   post_trial_gap: 2000,
 };
 
-// end (fullscreen)
-const end_experiment = {
-  type: jsPsychFullscreen,
-  fullscreen_mode: false,
-  delay_after: 1000,
-};
-
 // timeline
 const questionnaire = {
-  timeline: [start_experiment, age, sex, hourglass3, end_experiment],
+  timeline: [age, sex, hourglass3],
 };
