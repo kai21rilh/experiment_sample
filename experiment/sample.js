@@ -17,7 +17,7 @@ const next_text = "次のページへ";
 
 // image
 const img_hourglass =
-  "https://kai21rilh.github.io/experiment_sample/img/hourglass_animated.gif";
+  "https://kai21rilh.github.io/experiment_sample/experiment/img/hourglass_animated.gif";
 
 // demographics
 const age = {
