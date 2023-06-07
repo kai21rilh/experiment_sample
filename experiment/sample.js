@@ -3,7 +3,7 @@ const jsPsych = initJsPsych({
   display_element: "display_stage",
   experiment_width: 1100,
   default_iti: 250,
-  on_finish: function () {
+  on_finish: function (data) {
     var datajs = jsPsych.data.get().json();
     Qualtrics.SurveyEngine.setEmbeddedData("datajs", datajs);
     jQuery("display_stage").remove();
@@ -64,7 +64,22 @@ const hourglass3 = {
   post_trial_gap: 2000,
 };
 
+const age2 = {
+  type: jsPsychSurveyText,
+  preamble: "最初に、あなた自身のことについて伺います。",
+  questions: [
+    {
+      prompt: "あなたの年齢について回答してください。",
+      placeholder: "半角数字のみ（例．68）",
+      name: "age",
+      columns: 30,
+      required: true,
+    },
+  ],
+  button_label: next_text,
+};
+
 // timeline
 const questionnaire = {
-  timeline: [age, sex, hourglass3],
+  timeline: [age, sex, hourglass3, age2],
 };
