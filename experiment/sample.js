@@ -51,18 +51,18 @@ const sex = {
 };
 
 // waiting period
-var wp3 = jsPsych.randomization.randomInt(10000, 15000);
-const hourglass3 = {
-  type: jsPsychImageKeyboardResponse,
-  stimulus: img_hourglass,
-  stimulus_height: 300,
-  maintain_aspect_ratio: true,
-  render_on_canvas: false,
-  prompt: "<p>しばらくお待ちください・・・</p>",
-  choices: "NO_KEYS",
-  trial_duration: wp3,
-  post_trial_gap: 2000,
-};
+// var wp3 = jsPsych.randomization.randomInt(10000, 15000);
+// const hourglass3 = {
+//   type: jsPsychImageKeyboardResponse,
+//   stimulus: img_hourglass,
+//   stimulus_height: 300,
+//   maintain_aspect_ratio: true,
+//   render_on_canvas: false,
+//   prompt: "<p>しばらくお待ちください・・・</p>",
+//   choices: "NO_KEYS",
+//   trial_duration: wp3,
+//   post_trial_gap: 2000,
+// };
 
 const age2 = {
   type: jsPsychSurveyText,
@@ -81,5 +81,6 @@ const age2 = {
 
 // timeline
 const questionnaire = {
-  timeline: [age, sex, hourglass3, age2],
+//   timeline: [age, sex, hourglass3, age2],
+  timeline: [age, sex, age2],
 };
