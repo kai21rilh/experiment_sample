@@ -3,7 +3,7 @@ const jsPsych = initJsPsych({
   display_element: "display_stage",
   experiment_width: 1100,
   default_iti: 250,
-  on_finish: function (data) {
+  on_finish: function () {
     var datajs = jsPsych.data.get().json();
     Qualtrics.SurveyEngine.setEmbeddedData("datajs", datajs);
     jQuery("display_stage").remove();
