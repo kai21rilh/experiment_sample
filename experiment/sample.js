@@ -4,11 +4,10 @@ const jsPsych = initJsPsych({
   experiment_width: 1100,
   default_iti: 250,
   on_finish: function () {
-    var datajs = jsPsych.data.get().json();
-    Qualtrics.SurveyEngine.setEmbeddedData("datajs", datajs);
-    jQuery("display_stage").remove();
-    jQuery("display_stage_background").remove();
-    this.clickNextButton();
+    jsPsych.data.addProperties({
+      test01: "condition A",
+      test02: "condition B",
+    });
   },
 });
 
