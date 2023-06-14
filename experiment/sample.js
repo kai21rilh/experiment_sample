@@ -10,6 +10,8 @@ const jsPsych = initJsPsych({
     });
     var datajs = jsPsych.data.get().json();
     Qualtrics.SurveyEngine.setEmbeddedData("datajs", datajs);
+    jQuery("display_stage").remove();
+    jQuery("display_stage_background").remove();
   },
 });
 
