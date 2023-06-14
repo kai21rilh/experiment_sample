@@ -66,11 +66,11 @@ const inst = {
   choices: [next_text],
 };
 
-const buttonpress = {
-  type: jsPsychHtmlKeyboardResponse,
-  stimulus: "何かキーを押してください。次の画面に進みます。",
-  choices: "ALL_KEYS",
-};
+// const buttonpress = {
+//   type: jsPsychHtmlKeyboardResponse,
+//   stimulus: "何かキーを押してください。次の画面に進みます。",
+//   choices: "ALL_KEYS",
+// }; // does not work ... a bug?
 
 var wp = jsPsych.randomization.randomInt(5000, 10000);
 const img_stim = {
@@ -97,5 +97,6 @@ const end = {
 
 // timeline
 const sample_program = {
-  timeline: [start, q1, q2, inst, buttonpress, img_stim, end],
+  // timeline: [start, q1, q2, inst, buttonpress, img_stim, end],
+  timeline: [start, q1, q2, inst, img_stim, end],
 };
