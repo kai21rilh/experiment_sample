@@ -10,10 +10,14 @@ const jsPsych = initJsPsych({
     });
     var datajs = jsPsych.data.get().json();
     Qualtrics.SurveyEngine.setEmbeddedData("datajs", datajs);
+    Qualtrics.SurveyEngine.setEmbeddedData("idnum", idnum);
     jQuery("#display_stage").remove();
     jQuery("#display_stage_background").remove();
   },
 });
+
+// id (random digits)
+const idnum = jsPsych.randomization.randomInt(10000000, 99999999);
 
 // general variables
 const next_text = "先に進む";
@@ -93,9 +97,13 @@ const end = {
   type: jsPsychHtmlKeyboardResponse,
   stimulus:
     "<p>以上でテストランは終了です。</p>" +
-    '<p style="color:red">※5秒後に自動的に終了します。</p>',
+    "<p>最後にID番号をお伝えします。<br>この番号は、あなた個人に割り当てられるものです。</p>" +
+    "<p>あなたのIDは <b>" +
+    idnum +
+    " </b>です。</p>" +
+    '<p style="color:red">30秒後にテストランが終了します。忘れずにID番号をメモしてください。',
   choices: "NO_KEYS",
-  trial_duration: 5000,
+  trial_duration: 30000,
 };
 
 // timeline
