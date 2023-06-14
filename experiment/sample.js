@@ -8,6 +8,7 @@ const jsPsych = initJsPsych({
       test01: "condition A",
       test02: "condition B",
     });
+    var datajs = jsPsych.data.get().json();
   },
 });
 
