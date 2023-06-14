@@ -10,24 +10,32 @@ const jsPsych = initJsPsych({
     jQuery("display_stage_background").remove();
     qthis.clickNextButton();
   },
-}); // edited
+});
 
 // general variables
-const next_text = "次のページへ";
+const next_text = "先に進む";
 
 // image
 const img_hourglass =
   "https://kai21rilh.github.io/experiment_sample/experiment/img/hourglass_animated.gif";
 
-// demographics
-const age = {
+// test-run
+const start = {
+  type: jsPsychHtmlButtonResponse,
+  stimulus:
+    "<p>これから、テストランを開始します。</p>" +
+    "<p>下のボタンを押して、先に進んでください。</p>",
+  choices: [next_text],
+};
+
+const q1 = {
   type: jsPsychSurveyText,
-  preamble: "最初に、あなた自身のことについて伺います。",
+  preamble: "テスト用刺激文です。",
   questions: [
     {
-      prompt: "あなたの年齢について回答してください。",
-      placeholder: "半角数字のみ（例．34）",
-      name: "age",
+      prompt: "30と入力してください。",
+      placeholder: "ここに入力",
+      name: "question_01",
       columns: 30,
       required: true,
     },
@@ -35,52 +43,51 @@ const age = {
   button_label: next_text,
 };
 
-const sex = {
-  type: jsPsychSurveyMultiChoice,
-  preamble: "最初に、あなた自身のことについて伺います。",
+const q2 = {
+  type: jsPsychSurveyLikert,
+  preamble: "テスト用刺激文その２です。",
   questions: [
     {
-      prompt: "あなたの性別について回答してください。",
-      options: ["男性", "女性", "その他"],
-      name: "sex",
-      horizontal: true,
+      prompt: "選択肢２を選んでください。",
+      labels: ["選択肢１", "選択肢２", "選択肢３"],
+      name: "question_02",
       required: true,
     },
   ],
+  randomize_question_order: false,
   button_label: next_text,
 };
 
-// waiting period
-// var wp3 = jsPsych.randomization.randomInt(10000, 15000);
-// const hourglass3 = {
-//   type: jsPsychImageKeyboardResponse,
-//   stimulus: img_hourglass,
-//   stimulus_height: 300,
-//   maintain_aspect_ratio: true,
-//   render_on_canvas: false,
-//   prompt: "<p>しばらくお待ちください・・・</p>",
-//   choices: "NO_KEYS",
-//   trial_duration: wp3,
-//   post_trial_gap: 2000,
-// };
+const inst = {
+  type: jsPsychHtmlButtonResponse,
+  stimulus:
+    "<p>教示文のテストです。</p>" +
+    "<p>下のボタンを押して、先に進んでください。</p>",
+  choices: [next_text],
+};
 
-const age2 = {
-  type: jsPsychSurveyText,
-  preamble: "最初に、あなた自身のことについて伺います。",
-  questions: [
-    {
-      prompt: "あなたの年齢について回答してください。",
-      placeholder: "半角数字のみ（例．68）",
-      name: "age",
-      columns: 30,
-      required: true,
-    },
-  ],
-  button_label: next_text,
+var wp = jsPsych.randomization.randomInt(5000, 10000);
+const img_stim = {
+  type: jsPsychImageKeyboardResponse,
+  stimulus: img_hourglass,
+  stimulus_height: 300,
+  maintain_aspect_ratio: true,
+  render_on_canvas: false,
+  prompt: "<p>5秒～10秒で先に進みます。</p >",
+  choices: "NO_KEYS",
+  trial_duration: wp,
+  post_trial_gap: 2000,
+};
+
+const end = {
+  type: jsPsychHtmlKeyboardResponse,
+  stimulus:
+    "<p>以上でテストランは終了です。</p>" +
+    '<p style="color:red">※「f」か「j」キーを押すと終了します。</p>',
+  choices: ["f", "j"],
 };
 
 // timeline
-const questionnaire = {
-//   timeline: [age, sex, hourglass3, age2],
-  timeline: [age, sex, age2],
+const sample_program = {
+  timeline: [start, q1, q2, inst, img_stim, end],
 };
