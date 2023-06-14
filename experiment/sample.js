@@ -70,8 +70,9 @@ var wp = jsPsych.randomization.randomInt(5000, 10000);
 const img_stim = {
   type: jsPsychImageKeyboardResponse,
   stimulus: img_hourglass,
-  stimulus_height: 300,
-  maintain_aspect_ratio: true,
+  stimulus_width: 280,
+  stimulus_height: 210,
+  maintain_aspect_ratio: false,
   render_on_canvas: false,
   prompt: "<p>5秒～10秒で先に進みます。</p >",
   choices: "NO_KEYS",
@@ -83,8 +84,8 @@ const end = {
   type: jsPsychHtmlKeyboardResponse,
   stimulus:
     "<p>以上でテストランは終了です。</p>" +
-    '<p style="color:red">※「f」か「j」キーを押すと終了します。</p>',
-  choices: ["f", "j"],
+    '<p style="color:red">※何かキーを押すと終了します。</p>',
+  choices: "ALL_KEYS",
 };
 
 // timeline
