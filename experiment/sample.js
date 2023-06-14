@@ -9,6 +9,7 @@ const jsPsych = initJsPsych({
       test02: "condition B",
     });
     var datajs = jsPsych.data.get().json();
+    Qualtrics.SurveyEngine.setEmbeddedData("datajs", datajs);
   },
 });
 
