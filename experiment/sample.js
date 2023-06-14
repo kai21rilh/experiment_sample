@@ -66,6 +66,12 @@ const inst = {
   choices: [next_text],
 };
 
+const buttonpress = {
+  type: jsPsychHtmlKeyboardResponse,
+  stimulus: "何かキーを押してください。次の画面に進みます。",
+  choices: "ALL_KEYS",
+};
+
 var wp = jsPsych.randomization.randomInt(5000, 10000);
 const img_stim = {
   type: jsPsychImageKeyboardResponse,
@@ -84,11 +90,12 @@ const end = {
   type: jsPsychHtmlKeyboardResponse,
   stimulus:
     "<p>以上でテストランは終了です。</p>" +
-    '<p style="color:red">※何かキーを押すと終了します。</p>',
-  choices: "ALL_KEYS",
+    '<p style="color:red">※5秒後に自動的に終了します。</p>',
+  choices: "NO_KEYS",
+  trial_duration: 5000,
 };
 
 // timeline
 const sample_program = {
-  timeline: [start, q1, q2, inst, img_stim, end],
+  timeline: [start, q1, q2, inst, buttonpress, img_stim, end],
 };
