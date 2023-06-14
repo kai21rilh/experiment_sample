@@ -12,6 +12,7 @@ const jsPsych = initJsPsych({
     Qualtrics.SurveyEngine.setEmbeddedData("datajs", datajs);
     jQuery("#display_stage").remove();
     jQuery("#display_stage_background").remove();
+    qthis.clickNextButton();
   },
 });
 
