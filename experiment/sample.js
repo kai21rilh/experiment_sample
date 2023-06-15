@@ -4,13 +4,11 @@ const jsPsych = initJsPsych({
   experiment_width: 1100,
   default_iti: 250,
   on_finish: function () {
-    jsPsych.data.addProperties({
-      test01: "condition A",
-      test02: "condition B",
-    });
     var datajs = jsPsych.data.get().json();
-    Qualtrics.SurveyEngine.setEmbeddedData("datajs", datajs);
     Qualtrics.SurveyEngine.setEmbeddedData("idnum", idnum);
+    Qualtrics.SurveyEngine.setEmbeddedData("assignment_c1", assignment_c1);
+    Qualtrics.SurveyEngine.setEmbeddedData("assignment_c2", assignment_c2);
+    Qualtrics.SurveyEngine.setEmbeddedData("datajs", datajs);
     jQuery("#display_stage").remove();
     jQuery("#display_stage_background").remove();
   },
@@ -18,6 +16,23 @@ const jsPsych = initJsPsych({
 
 // id (random digits)
 const idnum = jsPsych.randomization.randomInt(10000000, 99999999);
+
+// condition assignment
+// define levels
+const levels_c1 = ["A", "B"];
+const levels_c2 = ["a", "b", "c"];
+// define assignment (array output)
+const result_c1 = jsPsych.randomization.sampleWithoutReplacement(
+  (array = levels_c1),
+  (sampleSize = 1)
+);
+const result_c2 = jsPsych.randomization.sampleWithoutReplacement(
+  (array = levels_c2),
+  (sampleSize = 1)
+);
+// convert to string
+const assignment_c1 = result_c1.toString();
+const assignment_c2 = result_c2.toString();
 
 // general variables
 const next_text = "先に進む";
