@@ -52,7 +52,7 @@ const start = {
   type: jsPsychFullscreen,
   fullscreen_mode: true,
   message:
-    "これから、テストランを開始します。<br><br>準備ができたら、下のボタンを押してください。",
+    "<p>これから、テストランを開始します。<br><br>準備ができたら、下のボタンを押してください。</p>",
   button_label: next_text,
 };
 
@@ -125,6 +125,7 @@ const end = {
 const exit_fs = {
   type: jsPsychFullscreen,
   fullscreen_mode: false,
+  delay_after: 0,
 };
 
 // timeline
